@@ -15,13 +15,47 @@ Else
 6.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct Person {
+    char name[50];
+    int age;
+};
+
+int main() {
+    int n, i;
+
+    printf("Enter the number of people: ");
+    scanf("%d", &n);
+
+    struct Person people[n]; 
+    for(i = 0; i < n; i++) {
+        printf("\nEnter details for person %d:\n", i + 1);
+        printf("Name: ");
+        scanf(" %[^\n]s", people[i].name);
+        printf("Age: ");
+        scanf("%d", &people[i].age);
+    }
+
+    printf("\nVaccine Eligibility:\n");
+    for(i = 0; i < n; i++) {
+        if(people[i].age > 6) {
+            printf("%s (Age %d) is eligible for the vaccine.\n", people[i].name, people[i].age);
+        } else {
+            printf("%s (Age %d) is NOT eligible for the vaccine.\n", people[i].name, people[i].age);
+        }
+    }
+
+    return 0;
+}
+```
 
 
 Output:
 
-//paste your output here
+
+<img width="637" height="694" alt="image" src="https://github.com/user-attachments/assets/0477aecd-8d32-4572-85c3-3cfebfe3c259" />
 
 
 Result:
@@ -43,8 +77,46 @@ Algorithm:
 7.	Return 0
  
 Program:
+```
+#include <stdio.h>
+#include <string.h>
 
-//type your code here
+struct Person {
+    char name[50];
+    int age;
+    int eligible;
+};
+
+struct Person checkEligibility(struct Person p) {
+    if (p.age > 6) {
+        p.eligible = 1; 
+    } else {
+        p.eligible = 0;
+    }
+    return p; 
+}
+
+int main() {
+    struct Person p;
+
+    printf("Enter name: ");
+    scanf(" %[^\n]s", p.name); 
+    printf("Enter age: ");
+    scanf("%d", &p.age);
+
+    p = checkEligibility(p);
+
+    if(p.eligible) {
+        printf("%s (Age %d) is eligible for the vaccine.\n", p.name, p.age);
+    } else {
+        printf("%s (Age %d) is NOT eligible for the vaccine.\n", p.name, p.age);
+    }
+
+    return 0;
+}
+
+```
+
 
 
 
@@ -52,7 +124,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="621" height="302" alt="image" src="https://github.com/user-attachments/assets/b957cef9-9bf7-424d-82b3-d038d27d2bbc" />
+
 
 
 
@@ -86,7 +159,31 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+ ```
+#include <stdio.h>
+
+int main() {
+    char filename[100];
+    FILE *file;
+
+    printf("Enter the file name to open: ");
+    scanf("%s", filename);
+
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Error: Could not open file %s\n", filename);
+        return 1;
+    }
+
+    printf("File %s opened successfully.\n", filename);
+
+    // Close the file
+    fclose(file);
+    return 0;
+}
+
+
+```
 
 
 
@@ -94,7 +191,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="587" height="296" alt="image" src="https://github.com/user-attachments/assets/8d7e16e0-a529-4b75-b72d-72c5cdce59b0" />
+
 
 
 
@@ -132,16 +230,55 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    char filename[100];
+    char text[500];
+    FILE *file;
+
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("File does not exist. A new file will be created.\n");
+    } else {
+        printf("\nCurrent contents of %s:\n", filename);
+        char ch;
+        while ((ch = fgetc(file)) != EOF) {
+            putchar(ch);
+        }
+        fclose(file);
+        printf("\n");
+    }
+    file = fopen(filename, "a");
+    if (file == NULL) {
+        printf("Error opening file for writing.\n");
+        return 1;
+    }
+
+    printf("Enter text to insert into the file (end with a newline):\n");
+    getchar(); // To consume leftover newline from previous input
+    fgets(text, sizeof(text), stdin); 
+    fprintf(file, "%s", text); 
+    fclose(file);
+
+    printf("Text successfully inserted into %s.\n", filename);
+    return 0;
+}
 
 
+
+```
 
 
 Output:
+<img width="604" height="310" alt="image" src="https://github.com/user-attachments/assets/50e42332-796b-4f5e-8861-3c2457f0d5ac" />
 
 
-//paste your output here
+
 
 
 
@@ -186,8 +323,47 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct Student {
+    char name[50];
+    int rollNo;
+    float marks;
+};
+
+int main() {
+    int n, i;
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    struct Student students[n]; 
+
+    for(i = 0; i < n; i++) {
+        printf("\nEnter details for student %d:\n", i + 1);
+
+        printf("Name: ");
+        scanf(" %[^\n]s", students[i].name); 
+
+        printf("Roll Number: ");
+        scanf("%d", &students[i].rollNo);
+
+        printf("Marks: ");
+        scanf("%f", &students[i].marks);
+    }
+
+    printf("\nStudent Details:\n");
+    printf("S.No\tName\t\tRoll No\tMarks\n");
+    printf("-------------------------------------------\n");
+    for(i = 0; i < n; i++) {
+        printf("%d\t%s\t\t%d\t%.2f\n", i + 1, students[i].name, students[i].rollNo, students[i].marks);
+    }
+
+    return 0;
+}
+```
+
 
 
 
@@ -195,11 +371,12 @@ Program:
 Output:
 
 
-//paste your output here
 
 
 
 
+
+<img width="613" height="805" alt="image" src="https://github.com/user-attachments/assets/52e99cfd-f876-47c8-99d4-99126e7e3b6a" />
 
 
 Result:
