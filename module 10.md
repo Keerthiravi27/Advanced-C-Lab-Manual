@@ -1,4 +1,11 @@
 EXP NO:16 C PROGRAM TO SEARCH A GIVEN ELEMENT IN THE GIVEN LINKED LIST.
+
+DATE: 24/10/2025
+
+NAME: KEERTHANA R
+
+REGISTER NUMBER: 212224040156
+
 Aim:
 To write a C program to search a given element in the given linked list.
 
