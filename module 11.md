@@ -1,6 +1,13 @@
 
 
 EXP NO:21 C PROGRAM TO CREATE A FUNCTION TO FIND THE GREATEST NUMBER
+
+DATE: 31/10/2025
+
+NAME: KEERTHANA R
+
+REGISTER NUMBER: 212224040156
+
 Aim:
 To write a C program to create a function to find the greatest number
 
