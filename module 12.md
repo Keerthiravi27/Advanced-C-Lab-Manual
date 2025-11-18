@@ -1,6 +1,13 @@
 
 
 EXP NO 26: C PROGRAM TO DISPLAY STACK ELEMENTS USING LINKED LIST.
+
+DATE: 04/11/2025
+
+NAME: KEERTHANA R
+
+REGISTER NUMBER: 212224040156
+
 Aim:
 To write a C program to display stack elements using linked list.
 
